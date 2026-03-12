@@ -61,19 +61,24 @@ release_api_url() {
 	fi
 }
 
+json_string_values() {
+	key="$1"
+	printf '%s\n' "$RELEASE_JSON" \
+		| tr ',' '\n' \
+		| sed -n "s/.*\"$key\"[[:space:]]*:[[:space:]]*\"\([^\"]*\)\".*/\1/p"
+}
+
 extract_json_value() {
 	key="$1"
-	printf '%s' "$RELEASE_JSON" | sed -n "s/.*\"$key\":\"\([^\"]*\)\".*/\1/p" | head -n 1
+	json_string_values "$key" | head -n 1
 }
 
 select_asset_url() {
 	os_name="$1"
 	arch_name="$2"
-	asset_pattern="${BINARY_NAME}_[^\"]*_${os_name}_${arch_name}\\."
-	printf '%s\n' "$RELEASE_JSON" \
-		| tr ',' '\n' \
-		| sed -n 's/.*"browser_download_url":"\([^"]*\)".*/\1/p' \
-		| grep "/${asset_pattern}" \
+	asset_pattern="/${BINARY_NAME}_[^/]*_${os_name}_${arch_name}\\.tar\\.gz$"
+	json_string_values "browser_download_url" \
+		| grep "$asset_pattern" \
 		| head -n 1
 }
 

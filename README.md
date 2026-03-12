@@ -60,7 +60,7 @@ Example for Linux AMD64:
 
 ```bash
 curl -fL -o delete-all-deployments-cloudflare.tar.gz \
-	https://github.com/pablodz/delete-all-deployments-cloudflare/releases/latest/download/delete-all-deployments-cloudflare_linux_amd64.tar.gz
+	https://github.com/pablodz/delete-all-deployments-cloudflare/releases/download/v1.0.0/delete-all-deployments-cloudflare_1.0.0_linux_amd64.tar.gz
 
 tar -xzf delete-all-deployments-cloudflare.tar.gz
 chmod +x delete-all-deployments-cloudflare
@@ -92,6 +92,22 @@ export CF_DELETE_ALIASED_DEPLOYMENTS="false"
 
 - There is no single generic Go binary that runs on every operating system.
 - If a prebuilt release for your platform does not exist, `install.sh` falls back to downloading the source release and building it locally.
+
+## Release Assets
+
+Current `v1.0.0` assets:
+
+- `delete-all-deployments-cloudflare_1.0.0_darwin_amd64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_darwin_arm64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_linux_386.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_linux_amd64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_linux_arm64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_windows_386.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_windows_amd64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_windows_arm64.tar.gz`
+- `delete-all-deployments-cloudflare_1.0.0_checksums.txt`
+
+Verify downloads with the published checksums file when needed.
 
 ## References
 
